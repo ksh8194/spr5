@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mimpl" name="kbs,11mbc,sbs5" class="pack.MessageImpl" scope="singleton" c:year="2000" c:myInfo-ref="myInfo" p:spec="스프링 전문가" p:fileInter-ref="outFileInterImpl">
+		<constructor-arg index="0" type="String">
+			<value>안녕</value>
+		</constructor-arg>
+		
+		<constructor-arg index="1" type="java.lang.String">
+			<value>반가워</value>
+		</constructor-arg>
+		
+		<!--  
+		<constructor-arg index="2" type="int" value="2000"/>
+		<constructor-arg index="3" type="pack.MyInfo" ref="myInfo"></constructor-arg>
+		-->
+		<!--  
+		<property name="spec">
+			<value>웹프로그램 전문</value>
+		</property>
+		<property name="fileInter">
+			<ref bean="outFileInterImpl"/>
+		</property>
+		-->
+	</bean> 
+	<bean id="myInfo" name="ytn" class="pack.MyInfo"/>
+	<bean id="outFileInterImpl" class="other.OutFileInterImpl">
+		<property name="filePath" value="c:/dev/test.txt"/>
+	</bean>
+</beans>
+
+<!-- 생성자 주입  첫줄 생성자 호출해서 순서대로 하나씩 생성자에 매핑해서 넣는방법 index 안써줘도됨 scope 안쓰면 singleton. 객체 하나 생성됨  myinfo는 여기저기 클래스에서 참조 -->
+	
